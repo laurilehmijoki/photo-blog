@@ -1,0 +1,364 @@
+$placeholderHeight: 30px;
+.post {
+  font-size: 18px;
+
+  &__author {
+    font-style: italic;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__author, &__date {
+    opacity: 0.9;
+  }
+  &__date {
+    display: inline-block;
+    line-height: 1;
+    font-style: italic;
+    &::after {
+      content: '–';
+      margin: 0 $smallMargin;
+    }
+  }
+  &__title {
+    font-size: 1.5rem;
+    font-family: $headingFontFamily;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    line-height: 1.2;
+    border: none;
+    color: inherit;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-overflow: ellipsis;
+  }
+  &__imageContainer {
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  &__textContainer {
+    line-height: 1.5rem;
+    margin: $mediumMargin 0;
+  }
+  &__youtubeContainer {
+    display: block;
+    max-width: 100%;
+    text-align: center;
+    margin: $mediumMargin 0;
+    &__dragHandle {
+      &.fa {
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        display: block;
+        margin-top: $mediumMargin;
+        font-size: $largeMargin;
+      }
+    }
+  }
+  $adminControlsHeight: 60px;
+  &__withAdminPage {
+    margin-bottom: $adminControlsHeight + $mediumMargin;
+  }
+  &__youtubePrompt {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: $widePage;
+    text-align: center;
+    &__input {
+      width: 100%;
+      max-width: 500px;
+      padding: $smallMargin;
+      margin: 0 $smallMargin;
+      transition: all 0.2s ease-in-out;
+      @mixin border($color) {
+        outline: none;
+        border: 1px solid $color;
+        box-shadow: 0 0 5px 2px $color;
+      }
+      &__valid {
+        @include border($success);
+      }
+      &__invalid {
+        @include border($warning);
+      }
+      &__empty {
+        @include border($secondary);
+      }
+    }
+  }
+  &__adminControls {
+    position: fixed;
+    width: 100%;
+    height: $adminControlsHeight;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    @media screen and (max-width: $breakSmall) {
+      justify-content: space-between;
+    }
+    padding: $mediumMargin;
+    background-color: white;
+    border-top: $footerBorderHeight solid $black;
+    box-sizing: border-box;
+    > .button {
+      &:not(:last-child) {
+        @media screen and (min-width: $breakSmall) {
+          margin-right: $mediumMargin;
+        }
+      }
+    }
+    &__publish, &__unpublish {
+      transition: color 0.2s ease-in-out;
+    }
+    &__publish {
+      color: rgb(239, 228, 100);
+    }
+    &__unpublish {
+      color: rgb(8, 140, 28);
+    }
+  }
+  &__placeholder {
+    display: block;
+    margin: $mediumMargin auto;
+    text-align: center;
+    font-size: $placeholderHeight;
+    &__visible {
+      display: block;
+      animation: placeholderImageIn 0.2s;
+    }
+    &__hidden {
+      display: none;
+    }
+    &__clickable {
+      padding: $smallMargin 0;
+      cursor: pointer;
+      color: white;
+      border-radius: $extraSmallMargin;
+      background-color: $secondary;
+      transition: opacity 0.1s ease-in-out;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__uploadPhotoButton {
+    display: flex;
+    align-items: center;
+  }
+  &__fileInput {
+    position: fixed;
+    top: -1000px;
+  }
+  &__appendToImageFragment {
+    &:first-child {
+      margin-right: $extraSmallMargin;
+    }
+  }
+  &__expandingArea {
+    position: relative;
+
+    textarea, pre {
+      margin: 0;
+      outline: 0;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      font: inherit;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    pre {
+      display: block;
+      /* Hide the text; just using it for sizing */
+      visibility: hidden;
+    }
+    textarea {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      /* Remove WebKit user-resize widget */
+      resize: none;
+      width: 100%;
+      color: inherit;
+    }
+  }
+  &__body {
+    line-height: 1.6;
+    iframe[src*="youtube.com"] {
+      &:not(:first-child) {
+        margin-top: $mediumMargin;
+      }
+      max-width: 100%;
+    }
+  }
+  &__image {
+    $imageTransitionDuration: 0.2s;
+    transition: all $imageTransitionDuration ease-in-out;
+    height: auto;
+    min-width: 150px;
+    max-height: 600px;
+    vertical-align: middle;
+    margin: $mediumMargin 0;
+    cursor: pointer;
+    &:not(.post__image__placeholder) {
+      box-shadow: $imageBoxShadow;
+    }
+    &:only-child {
+      max-width: 100%;
+    }
+    &:not(:only-child) {
+      @media screen and (max-width: $breakSmall) {
+        max-width: 100%;
+      }
+      @media screen and (min-width: $breakSmall) {
+        max-width: 45%;
+        margin: $mediumMargin;
+      }
+    }
+    &__placeholder {
+      &.fa {
+        font-size: $placeholderHeight;
+      }
+      &__inImageContainer {
+        opacity: 1;
+        -webkit-animation: delayedPlaceholderImage $imageTransitionDuration;
+        -webkit-animation-delay: 0.0s;
+        animation: delayedPlaceholderImage $imageTransitionDuration;
+        animation-delay: 0.0s;
+      }
+    }
+    &__draggable {
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+    }
+    &__beingDragged {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
+  }
+  &__comments {
+    border-top: 1px solid $black;
+    $commentBgColor: #f4f4f4;
+    margin: $mediumMargin 0;
+    &__comment {
+      margin-top: $smallMargin;
+      padding: $smallMargin $mediumMargin;
+      border-radius: $extraSmallMargin;
+      &:target {
+        background-color: $commentBgColor;
+      }
+      &__author {
+        font-style: italic;
+        margin-bottom: $extraSmallMargin;
+      }
+      &__paragraph {
+        font-size: 14px;
+        letter-spacing: 0.7px;
+        line-height: 1.1rem;
+        &:not(:first-child) {
+          margin-top: $smallMargin;
+        }
+      }
+      &__created {
+        transform: rotateX(90deg);
+        animation: revealCreatedComment 1.5s;
+        animation-fill-mode: forwards;
+      }
+    }
+    &__addComment {
+      $padding: $mediumMargin;
+      border-radius: $extraSmallMargin;
+      &:before {
+        position: absolute;
+        margin-top: -($mediumMargin + $padding);
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: $mediumMargin solid transparent;
+        border-right: $mediumMargin solid transparent;
+        border-bottom: $mediumMargin solid $commentBgColor;
+      }
+      background: $commentBgColor;
+      margin-top: $largeMargin;
+      padding: $padding;
+    }
+    &__authorInput, &__textInput {
+      padding: $smallMargin;
+      border-radius: $extraSmallMargin;
+      background: white;
+      border: 1px solid $disabled;
+      &:focus {
+        border-color: transparent;
+      }
+    }
+    &__authorInput {
+      margin: 0 0 $mediumMargin 0;
+      display: block;
+      font-style: italic;
+    }
+    &__textInput {
+      margin: 0 0 $mediumMargin 0;
+      display: block;
+      resize: none;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+}
+
+@-webkit-keyframes delayedPlaceholderImage {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 0.1; }
+  70% { opacity: 0.3; }
+  80% { opacity: 0.5; }
+  90% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+@keyframes delayedPlaceholderImage {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 0.1; }
+  70% { opacity: 0.3; }
+  80% { opacity: 0.5; }
+  90% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+@keyframes placeholderImageIn {
+  0% { height: 0; opacity: 0; }
+  10% { height: $placeholderHeight*0.1; opacity: 0.1; }
+  20% { height: $placeholderHeight*0.2; opacity: 0.2; }
+  30% { height: $placeholderHeight*0.3; opacity: 0.3; }
+  40% { height: $placeholderHeight*0.4; opacity: 0.4; }
+  50% { height: $placeholderHeight*0.5; opacity: 0.5; }
+  60% { height: $placeholderHeight*0.6; opacity: 0.6; }
+  70% { height: $placeholderHeight*0.7; opacity: 0.7; }
+  80% { height: $placeholderHeight*0.8; opacity: 0.8; }
+  90% { height: $placeholderHeight*0.9; opacity: 0.9; }
+  100% { height: $placeholderHeight; opacity: 1; }
+}
+
+@keyframes revealCreatedComment {
+  0% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}

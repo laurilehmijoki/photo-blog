@@ -1,0 +1,18 @@
+.photosPage {
+  &__photosList {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    &__imageContainer {
+      display: inline-block;
+      vertical-align: middle;
+      padding: $extraSmallMargin;
+      box-sizing: border-box;
+      img {
+        height: auto;
+        max-width: 100%;
+        box-shadow: $imageBoxShadow;
+      }
+    }
+  }
+}

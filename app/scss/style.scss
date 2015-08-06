@@ -1,0 +1,76 @@
+@import "variables";
+@import "../components/post/post";
+@import "../components/photosPage/photosPage";
+@import "../components/postsPage/postsPage";
+@import "../components/loginPage/loginPage";
+@import "../components/frontPage/frontPage";
+@import "../components/header/header";
+@import "../components/header/header";
+
+$fa-font-path: '/font-awesome/fonts';
+@import "../../node_modules/font-awesome/scss/font-awesome";
+
+body {
+  color: $black;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $bodyFontFamily;
+}
+
+.clearBoth {
+  clear: both;
+}
+
+.section {
+  max-width: $widePage;
+  margin-left: auto;
+  margin-right: auto;
+  &__padded {
+    padding: 0 $mediumMargin;
+    margin: $mediumMargin auto;
+  }
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  border-radius: $extraSmallMargin;
+  font-family: "Lucida Grande", sans-serif;
+  letter-spacing: 1px;
+  outline: none;
+  &__primary {
+    color: white;
+    background-color: $primary;
+  }
+  &__secondary {
+    color: white;
+    background-color: $secondary;
+  }
+  &__disabled {
+    background-color: $disabled;
+    opacity: 0.4;
+    color: grey;
+    cursor: default;
+  }
+  &__big {
+    padding: $mediumMargin;
+    font-size: 15px;
+  }
+  &__small {
+    padding: $smallMargin $mediumMargin;
+    font-size: 12px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+  &:visited {
+    color: $black;
+  }
+  &.showAllPosts, &.showAllPhotos, &.showNextVideo {
+    color: $highlightedLink;
+  }
+}

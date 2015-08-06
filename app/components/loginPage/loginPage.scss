@@ -1,0 +1,25 @@
+.loginPage {
+  &__input {
+    width: 100%;
+    display: block;
+    padding: $largeMargin;
+    &__friendQuestion {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    &__label {
+      letter-spacing: 1px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  &__submit, &__input, &__loginFailed {
+    margin: $largeMargin auto;
+    display: block;
+    font-size: 24px;
+  }
+  &__loginFailed {
+    color: red;
+    text-align: center;
+  }
+}

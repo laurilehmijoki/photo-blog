@@ -1,0 +1,46 @@
+.postsPage {
+  &__postsList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &__post {
+      display: table;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      &:nth-child(2n) {
+        background-color: rgb(247, 247, 247);
+      }
+      &__container {
+        display: table-row;
+      }
+      &__cell {
+        display: table-cell;
+        vertical-align: middle;
+        width: 50%;
+        &__image {
+          text-align: center;
+        }
+      }
+      &__title {
+        font-size: 0.9rem;
+        font-family: $headingFontFamily;
+        text-align: left;
+        padding-left: $mediumMargin;
+        padding-top: $mediumMargin;
+      }
+      &__date {
+        padding-bottom: $mediumMargin;
+        padding-left: $mediumMargin;
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+      img {
+        height: auto;
+        margin: $smallMargin;
+        box-shadow: $imageBoxShadow;
+      }
+    }
+  }
+}

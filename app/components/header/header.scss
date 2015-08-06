@@ -1,0 +1,13 @@
+.header {
+  &__title {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+    font-family: $headingFontFamily;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    &:active, &:hover {
+      opacity: 0.9;
+    }
+  }
+  border-bottom: $headerBorderHeight solid $black;
+}
