@@ -19,7 +19,7 @@ var texts = lang => ({
     }[lang],
     allPosts: {
         fi: 'Kaikki kirjoitukset',
-        en: 'All photos'
+        en: 'All posts'
     }[lang],
     loginPlaceholder: {
         fi: 'Käyttäjätunnus',
